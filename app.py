@@ -26,8 +26,8 @@ def upload_video():
         video_file.save(file_path)
 
         # Write "True" to a text file
-        with open('upload_status.txt', 'w') as f:
-            f.write("True")
+        with open('upload_status.txt', 'a') as f:
+            f.write(file_path)
 
         return 'Upload successful', 200
 
