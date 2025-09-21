@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #808080;
+  shape-rendering: crispEdges;
+}
+.line-correct {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+.line-incorrect {
+  fill: none;
+  stroke: firebrick;
+  stroke-width: 2px;
+}
