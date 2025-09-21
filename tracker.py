@@ -130,6 +130,6 @@ def detectFileChange(file_path):
             lastHash = currentHash
             trackUser()
             # print(str(videoToggle))
-        time.sleep(1)
+        time.sleep(500)
 
 detectFileChange('upload_staus.txt')
