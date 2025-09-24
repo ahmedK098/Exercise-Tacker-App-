@@ -1,5 +1,6 @@
 from flask import Flask, request
 import os
+from tracker import detectFileChange
 
 app = Flask(__name__)
 
@@ -27,7 +28,7 @@ def upload_video():
 
         # Write "True" to a text file
         with open('upload_status.txt', 'w') as f:
-            f.write("True")
+            f.write(str(file_path))
 
         return 'Upload successful', 200
 

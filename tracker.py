@@ -8,13 +8,13 @@ import hashlib
 import time 
 
 
-from correcttemplate import recognizer
+from correctSquat import recognizer
 from wrongtemplate import recognizer2
 
 videoToggle = False
 
-def trackUser():
-    correcttemplate = ['squat1', 'squat2', 'squat3', 'squat4', 'squat5', 'squat6', 'squat7', 'squat8', 'squat9', 'squat10', 'squat11', 'squat12']
+def trackUser(video_path):
+    correcttemplate = ['squat1', 'squat2', 'squat3', 'squat4', 'squat5', 'squat6', 'squat7', 'squat8', 'squat9', 'squat10', 'squat11', 'squat12', 'squat13', 'squat14', 'squat15', 'squat16', 'squat17', 'squat18']
     wrongtemplate = ['w_squat1', 'w_squat2', 'w_squat3', 'w_squat4', 'w_squat5', 'w_squat6']
 
     mp_drawing = mp.solutions.drawing_utils
@@ -38,7 +38,7 @@ def trackUser():
     # empty array to hold points of detected poses
     points = []
     # while videoToggle:
-    cap = cv2.VideoCapture('squat5.mp4')
+    cap = cv2.VideoCapture(video_path)
     while cap.isOpened():
         #read frame object 
         ret, frame = cap.read()
@@ -128,8 +128,15 @@ def detectFileChange(file_path):
             videoToggle = True
             print("File change")
             lastHash = currentHash
-            trackUser()
+            print(lastHash)
+            with open(file_path, 'r') as f:
+                first_line = f.readline().strip()
+            trackUser(first_line)
             # print(str(videoToggle))
-        time.sleep(500)
+        time.sleep(1)
 
-detectFileChange('upload_staus.txt')
+# CRITICAL CHANGE: Only run the infinite loop when this is the main script
+if __name__ == '__main__':
+    # This will run when 'python tracker.py' is called by main.py
+    # but NOT when 'app.py' imports it.
+    detectFileChange('upload_status.txt')
