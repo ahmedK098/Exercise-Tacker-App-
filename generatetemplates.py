@@ -11,11 +11,7 @@ pose = mp_pose.Pose(
     min_tracking_confidence=0.95)
 
 def loop_files(directory):
-<<<<<<< HEAD
     f = open("correctSquat.py", "w")
-=======
-    f = open("wrongskeleton.py", "w")
->>>>>>> a92f2c0d6cd15847c12c5918111f29d365345a8a
     f.write("from dollarpy import Recognizer, Template, Point\n")
     recstring=""
     for file_name in os.listdir(directory):
@@ -65,3 +61,7 @@ def loop_files(directory):
     recstring = recstring[:-1]
     f.write ("recognizer = Recognizer(["+recstring+"])\n")    
     f.close()
+
+# Example usage
+directory_path = "C:/Users/Khalid Mohamed Salih/Desktop/EUE/TUI Project/Exercise Tracker App"
+loop_files(directory_path)
